@@ -213,6 +213,8 @@ vim.keymap.set('n', '<leader>l', ':BufferLineCycleNext<CR>', { desc = 'next tab'
 
 vim.keymap.set('n', '<C-j>', '<C-d>', { desc = 'half page down' })
 vim.keymap.set('n', '<C-k>', '<C-u>', { desc = 'half page up' })
+vim.keymap.set('v', '<C-j>', '<C-d>', { desc = 'half page down' })
+vim.keymap.set('v', '<C-k>', '<C-u>', { desc = 'half page up' })
 
 vim.keymap.set('n', '<leader>gs', ':Gitsigns stage_buffer<CR>', { desc = 'git stage buffer', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>gr', ':Gitsigns reset_buffer<CR>', { desc = 'git reset buffer', noremap = true, silent = true })
