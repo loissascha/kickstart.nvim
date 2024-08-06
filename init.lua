@@ -296,6 +296,8 @@ require('lazy').setup({
     end,
   },
 
+  { 'mhinz/vim-startify', event = 'VimEnter' },
+
   {
     'karb94/neoscroll.nvim',
     config = function()
