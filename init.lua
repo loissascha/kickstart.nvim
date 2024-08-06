@@ -218,6 +218,7 @@ vim.keymap.set('v', '<C-k>', '<C-u>', { desc = 'half page up' })
 
 vim.keymap.set('n', '<leader>gs', ':Gitsigns stage_buffer<CR>', { desc = 'git stage buffer', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>gr', ':Gitsigns reset_buffer<CR>', { desc = 'git reset buffer', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>gp', ':Copilot panel<CR>', { desc = 'Open Copilot panel', noremap = true, silent = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -282,6 +283,16 @@ require('lazy').setup({
           },
         },
       }
+    end,
+  },
+
+  -- GitHub Copilot plugin
+  {
+    'github/copilot.vim',
+    config = function()
+      -- Optional: Add custom configuration here
+      -- vim.g.copilot_no_tab_map = true
+      -- vim.api.nvim_set_keymap('i', '<C-I>', 'copilot#Accept("<CR>")', { silent = true, expr = true, script = true })
     end,
   },
 
