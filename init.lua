@@ -296,6 +296,15 @@ require('lazy').setup({
     end,
   },
 
+
+  -- nvim-colorizer.lua
+  {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup()
+    end,
+  },
+
   { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
 
   {
