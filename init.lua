@@ -211,14 +211,15 @@ vim.keymap.set('n', '<leader>bg', ':b ', { desc = 'Buffer Goto <number>' })
 vim.keymap.set('n', '<leader>h', ':BufferLineCyclePrev<CR>', { desc = 'previous tab', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>l', ':BufferLineCycleNext<CR>', { desc = 'next tab', noremap = true, silent = true })
 
-vim.keymap.set('n', '<C-j>', '<C-d>', { desc = 'half page down' })
-vim.keymap.set('n', '<C-k>', '<C-u>', { desc = 'half page up' })
-vim.keymap.set('v', '<C-j>', '<C-d>', { desc = 'half page down' })
-vim.keymap.set('v', '<C-k>', '<C-u>', { desc = 'half page up' })
+-- vim.keymap.set('n', '<C-j>', '<C-d>', { desc = 'half page down' })
+-- vim.keymap.set('n', '<C-k>', '<C-u>', { desc = 'half page up' })
+-- vim.keymap.set('v', '<C-j>', '<C-d>', { desc = 'half page down' })
+-- vim.keymap.set('v', '<C-k>', '<C-u>', { desc = 'half page up' })
 
 vim.keymap.set('n', '<leader>gs', ':Gitsigns stage_buffer<CR>', { desc = 'git stage buffer', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>gr', ':Gitsigns reset_buffer<CR>', { desc = 'git reset buffer', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>gp', ':Copilot panel<CR>', { desc = 'Open Copilot panel', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>gn', ':NvimTreeRefresh<CR>', { desc = 'Refresh Nvim Tree', noremap = true, silent = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
