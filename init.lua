@@ -196,11 +196,8 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-vim.keymap.set('n', '<leader>o', 'o', { desc = 'Write line under' })
-vim.keymap.set('n', '<leader>O', 'O', { desc = 'Write line over' })
-
-vim.keymap.set('n', 'o', 'o<C-c>', { desc = 'Add line under' })
-vim.keymap.set('n', 'O', 'O<C-c>', { desc = 'Add line over' })
+vim.keymap.set('n', '<leader>o', 'o<C-c>', { desc = 'Add line under' })
+vim.keymap.set('n', '<leader>O', 'O<C-c>', { desc = 'Add line over' })
 
 vim.keymap.set('n', '<leader>n', ':NvimTreeToggle<Enter>', { desc = 'Toggle Nvim Tree', noremap = true, silent = true })
 
@@ -346,6 +343,12 @@ require('lazy').setup({
     -- use opts = {} for passing setup options
     -- this is equalent to setup({}) function
   },
+
+  --{
+  --  'pmizio/typescript-tools.nvim',
+  --  dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+  --  opts = {},
+  --},
 
   -- nvim-colorizer.lua
   {
@@ -715,6 +718,7 @@ require('lazy').setup({
           --  See `:help K` for why this keymap.
           map('K', vim.lsp.buf.hover, 'Hover Documentation')
           map('gh', vim.lsp.buf.hover, 'Hover Documentation')
+          --map('<C-H>', vim.lsp.buf.signature_help(), 'Show [S]ignature Help')
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
@@ -1131,3 +1135,8 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+vim.o.completeopt = 'menuone,noselect'
+
+-- Enable automatic signature help
+vim.cmd [[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]]
