@@ -294,7 +294,38 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'christoomey/vim-tmux-navigator',
+    cmd = {
+      'TmuxNavigateLeft',
+      'TmuxNavigateDown',
+      'TmuxNavigateUp',
+      'TmuxNavigateRight',
+      'TmuxNavigatePrevious',
+    },
+    keys = {
+      { '<c-h>', '<cmd><C-U>TmuxNavigateLeft<cr>' },
+      { '<c-j>', '<cmd><C-U>TmuxNavigateDown<cr>' },
+      { '<c-k>', '<cmd><C-U>TmuxNavigateUp<cr>' },
+      { '<c-l>', '<cmd><C-U>TmuxNavigateRight<cr>' },
+      { '<c-\\>', '<cmd><C-U>TmuxNavigatePrevious<cr>' },
+    },
+  },
+
   { 'mhinz/vim-startify', event = 'VimEnter' },
+
+  {
+    'numToStr/Comment.nvim',
+    opts = {
+      -- add any options here
+      mappings = {
+        ---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
+        basic = false,
+        ---Extra mapping; `gco`, `gcO`, `gcA`
+        extra = false,
+      },
+    },
+  },
 
   {
     'karb94/neoscroll.nvim',
