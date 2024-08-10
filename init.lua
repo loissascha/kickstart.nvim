@@ -352,16 +352,16 @@ require('lazy').setup({
         post_hook = nil, -- Function to run after the scrolling animation ends
         performance_mode = false, -- Disable "Performance Mode" on all buffers.
       }
-      vim.keymap.set('n', '<C-j>', function()
+      vim.keymap.set('n', '<C-d>', function()
         neoscroll.ctrl_d { duration = 150 }
       end)
-      vim.keymap.set('v', '<C-j>', function()
+      vim.keymap.set('v', '<C-d>', function()
         neoscroll.ctrl_d { duration = 150 }
       end)
-      vim.keymap.set('n', '<C-k>', function()
+      vim.keymap.set('n', '<C-u>', function()
         neoscroll.ctrl_u { duration = 150 }
       end)
-      vim.keymap.set('v', '<C-k>', function()
+      vim.keymap.set('v', '<C-u>', function()
         neoscroll.ctrl_u { duration = 150 }
       end)
     end,
