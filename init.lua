@@ -284,6 +284,12 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+  },
+
   -- GitHub Copilot plugin
   {
     'github/copilot.vim',
@@ -1177,7 +1183,17 @@ require('lazy').setup({
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 
-vim.o.completeopt = 'menuone,noselect'
+-- vim.o.completeopt = 'menuone,noselect'
 
 -- Enable automatic signature help
-vim.cmd [[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]]
+-- vim.cmd [[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]]
+local harpoon = require 'harpoon'
+
+harpoon:setup()
+
+vim.keymap.set('n', '<leader>m', function()
+  harpoon:list():add()
+end, { desc = 'Add [M]arker to Harpoon' })
+vim.keymap.set('n', '<leader>h', function()
+  harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { desc = '[H]arpoon' })
