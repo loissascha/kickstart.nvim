@@ -199,14 +199,14 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<leader>o', 'o<C-c>', { desc = 'Add line under' })
 vim.keymap.set('n', '<leader>O', 'O<C-c>', { desc = 'Add line over' })
 
-vim.keymap.set('n', '<leader>n', ':NvimTreeToggle<Enter>', { desc = 'Toggle Nvim Tree', noremap = true, silent = true })
+-- vim.keymap.set('n', '<leader>n', ':NvimTreeToggle<Enter>', { desc = 'Toggle Nvim Tree', noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>bd', ':bd<Enter>', { desc = 'Buffer Delete', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>bc', ':bd ', { desc = 'Buffer Delete <number>' })
 vim.keymap.set('n', '<leader>bg', ':b ', { desc = 'Buffer Goto <number>' })
 
-vim.keymap.set('n', '<leader>h', ':BufferLineCyclePrev<CR>', { desc = 'previous tab', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>l', ':BufferLineCycleNext<CR>', { desc = 'next tab', noremap = true, silent = true })
+-- vim.keymap.set('n', '<leader>h', ':BufferLineCyclePrev<CR>', { desc = 'previous tab', noremap = true, silent = true })
+-- vim.keymap.set('n', '<leader>l', ':BufferLineCycleNext<CR>', { desc = 'next tab', noremap = true, silent = true })
 
 -- vim.keymap.set('n', '<C-j>', '<C-d>', { desc = 'half page down' })
 -- vim.keymap.set('n', '<C-k>', '<C-u>', { desc = 'half page up' })
@@ -264,30 +264,59 @@ require('lazy').setup({
   --
   --  This is equivalent to:
   --    require('Comment').setup({})
+  -- {
+  --   'nvim-tree/nvim-tree.lua',
+  --   version = '*',
+  --   lazy = false,
+  --   dependencies = {
+  --     'nvim-tree/nvim-web-devicons',
+  --   },
+  --   config = function()
+  --     require('nvim-tree').setup {
+  --       filters = {
+  --         custom = {
+  --           '^.git$',
+  --           '^.vscode$',
+  --           '^.zed$',
+  --         },
+  --       },
+  --     }
+  --   end,
+  -- },
+
   {
-    'nvim-tree/nvim-tree.lua',
+    'nvim-neo-tree/neo-tree.nvim',
     version = '*',
-    lazy = false,
     dependencies = {
-      'nvim-tree/nvim-web-devicons',
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
+      'MunifTanjim/nui.nvim',
     },
-    config = function()
-      require('nvim-tree').setup {
-        filters = {
-          custom = {
-            '^.git$',
-            '^.vscode$',
-            '^.zed$',
+    cmd = 'Neotree',
+    keys = {
+      { '\\', ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
+      { '<leader>nr', ':Neotree toggle show buffers right<CR>', { desc = 'Neotree show buffers right' } },
+      { '<leader>ng', ':Neotree float git_status<CR>', { desc = 'Neotree show git status' } },
+    },
+    opts = {
+      filesystem = {
+        window = {
+          mappings = {
+            ['\\'] = 'close_window',
           },
         },
-      }
-    end,
+      },
+    },
   },
 
   {
     'ThePrimeagen/harpoon',
     branch = 'harpoon2',
     dependencies = { 'nvim-lua/plenary.nvim' },
+  },
+
+  {
+    'jlanzarotta/bufexplorer',
   },
 
   -- GitHub Copilot plugin
@@ -397,41 +426,41 @@ require('lazy').setup({
 
   { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
 
-  {
-    'akinsho/bufferline.nvim',
-    requires = 'nvim-tree/nvim-web-devicons',
-    config = function()
-      require('bufferline').setup {
-        options = {
-          numbers = 'buffer_id',
-          close_command = 'bdelete! %d',
-          right_mouse_command = 'bdelete! %d',
-          left_mouse_command = 'buffer %d',
-          middle_mouse_command = nil,
-          indicator = {
-            icon = '▎', -- this should be omitted if indicator style is set to 'icon'
-          },
-          buffer_close_icon = '',
-          modified_icon = '●',
-          close_icon = '',
-          left_trunc_marker = '',
-          right_trunc_marker = '',
-          max_name_length = 18,
-          max_prefix_length = 15, -- prefix used when a buffer is deduplicated
-          tab_size = 18,
-          show_buffer_close_icons = true,
-          show_buffer_icons = true,
-          show_close_icon = true,
-          show_tab_indicators = true,
-          persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
-          -- separator_style = 'slant' | 'thick' | 'thin' | { 'any', 'any' },
-          enforce_regular_tabs = false,
-          always_show_bufferline = true,
-          --sort_by = 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs',
-        },
-      }
-    end,
-  },
+  -- {
+  --   'akinsho/bufferline.nvim',
+  --   requires = 'nvim-tree/nvim-web-devicons',
+  --   config = function()
+  --     require('bufferline').setup {
+  --       options = {
+  --         numbers = 'buffer_id',
+  --         close_command = 'bdelete! %d',
+  --         right_mouse_command = 'bdelete! %d',
+  --         left_mouse_command = 'buffer %d',
+  --         middle_mouse_command = nil,
+  --         indicator = {
+  --           icon = '▎', -- this should be omitted if indicator style is set to 'icon'
+  --         },
+  --         buffer_close_icon = '',
+  --         modified_icon = '●',
+  --         close_icon = '',
+  --         left_trunc_marker = '',
+  --         right_trunc_marker = '',
+  --         max_name_length = 18,
+  --         max_prefix_length = 15, -- prefix used when a buffer is deduplicated
+  --         tab_size = 18,
+  --         show_buffer_close_icons = true,
+  --         show_buffer_icons = true,
+  --         show_close_icon = true,
+  --         show_tab_indicators = true,
+  --         persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
+  --         -- separator_style = 'slant' | 'thick' | 'thin' | { 'any', 'any' },
+  --         enforce_regular_tabs = false,
+  --         always_show_bufferline = true,
+  --         --sort_by = 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs',
+  --       },
+  --     }
+  --   end,
+  -- },
 
   {
     'lewis6991/gitsigns.nvim',
@@ -1191,9 +1220,9 @@ local harpoon = require 'harpoon'
 
 harpoon:setup()
 
-vim.keymap.set('n', '<leader>m', function()
+vim.keymap.set('n', '<leader>a', function()
   harpoon:list():add()
 end, { desc = 'Add [M]arker to Harpoon' })
-vim.keymap.set('n', '<leader>h', function()
+vim.keymap.set('n', '<leader>j', function()
   harpoon.ui:toggle_quick_menu(harpoon:list())
 end, { desc = '[H]arpoon' })
