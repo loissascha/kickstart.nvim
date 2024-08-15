@@ -347,7 +347,7 @@ require('lazy').setup({
     },
   },
 
-  { 'mhinz/vim-startify', event = 'VimEnter' },
+  -- { 'mhinz/vim-startify', event = 'VimEnter' },
 
   {
     'numToStr/Comment.nvim',
@@ -1213,6 +1213,8 @@ require('lazy').setup({
 
 -- Enable automatic signature help
 -- vim.cmd [[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]]
+
+--Harpoon config
 local harpoon = require 'harpoon'
 
 harpoon:setup()
