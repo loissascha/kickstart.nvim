@@ -862,7 +862,7 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        clangd = {},
+        -- clangd = {},
         gopls = {
           cmd = { 'gopls' },
           filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
@@ -877,7 +877,7 @@ require('lazy').setup({
         pyright = {},
         astro = {},
         rust_analyzer = {},
-        arduino_language_server = {},
+        -- arduino_language_server = {},
         css_variables = {},
         omnisharp = {},
         phpactor = {},
@@ -972,7 +972,7 @@ require('lazy').setup({
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
+        javascript = { { 'prettierd', 'prettier' } },
       },
     },
   },
@@ -1176,6 +1176,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  -- require 'kickstart.plugins.none-ls',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
