@@ -215,7 +215,9 @@ vim.keymap.set('n', '<leader>bg', ':b ', { desc = 'Buffer Goto <number>' })
 
 vim.keymap.set('n', '<leader>gs', ':Gitsigns stage_buffer<CR>', { desc = 'git stage buffer', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>gr', ':Gitsigns reset_buffer<CR>', { desc = 'git reset buffer', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>gp', ':Copilot panel<CR>', { desc = 'Open Copilot panel', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cp', ':Copilot panel<CR>', { desc = 'Open Copilot panel', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cd', ':Copilot disable<CR>', { desc = 'Copilot disable', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ce', ':Copilot enable<CR>', { desc = 'Copilot enable', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>gn', ':NvimTreeRefresh<CR>', { desc = 'Refresh Nvim Tree', noremap = true, silent = true })
 
 -- [[ Basic Autocommands ]]
@@ -283,6 +285,22 @@ require('lazy').setup({
   --     }
   --   end,
   -- },
+  --
+  {
+    'folke/noice.nvim',
+    event = 'VeryLazy',
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      'MunifTanjim/nui.nvim',
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      'rcarriga/nvim-notify',
+    },
+  },
 
   {
     'nvim-neo-tree/neo-tree.nvim',
@@ -997,12 +1015,12 @@ require('lazy').setup({
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load()
+            end,
+          },
         },
       },
       'saadparwaiz1/cmp_luasnip',
@@ -1170,7 +1188,7 @@ require('lazy').setup({
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
-  -- require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
