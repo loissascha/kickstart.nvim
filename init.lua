@@ -220,6 +220,21 @@ vim.keymap.set('n', '<leader>cd', ':Copilot disable<CR>', { desc = 'Copilot disa
 vim.keymap.set('n', '<leader>ce', ':Copilot enable<CR>', { desc = 'Copilot enable', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>gn', ':NvimTreeRefresh<CR>', { desc = 'Refresh Nvim Tree', noremap = true, silent = true })
 
+vim.keymap.set('n', '<leader>m', function()
+  require('mini.files').open(vim.api.nvim_buf_get_name(0), true)
+end, { desc = 'Open mini.files (Current file directory)', noremap = true, silent = true })
+
+vim.keymap.set('n', '<leader>M', function()
+  require('mini.files').open(vim.uv.cwd(), true)
+end, { desc = 'Open mini.files (in working directory)', noremap = true, silent = true })
+
+-- {
+--   '<leader>m',
+--   function()
+--     require('mini.files').open(vim.api.nvim_buf_get_name(0), true)
+--   end,
+--   { desc = 'Open mini.files (Current file directory)' },
+-- },
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -286,147 +301,6 @@ require('lazy').setup({
   --   end,
   -- },
   --
-  {
-    'folke/noice.nvim',
-    event = 'VeryLazy',
-    opts = {
-      -- add any options here
-    },
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      'MunifTanjim/nui.nvim',
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      'rcarriga/nvim-notify',
-    },
-  },
-
-  {
-    'nvim-neo-tree/neo-tree.nvim',
-    version = '*',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
-      'MunifTanjim/nui.nvim',
-    },
-    cmd = 'Neotree',
-    keys = {
-      { '\\', ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
-      { '<leader>nr', ':Neotree toggle show buffers right<CR>', { desc = 'Neotree show buffers right' } },
-      { '<leader>ng', ':Neotree float git_status<CR>', { desc = 'Neotree show git status' } },
-    },
-    opts = {
-      filesystem = {
-        window = {
-          mappings = {
-            ['\\'] = 'close_window',
-          },
-        },
-      },
-    },
-  },
-
-  {
-    'ThePrimeagen/harpoon',
-    branch = 'harpoon2',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-  },
-
-  {
-    'jlanzarotta/bufexplorer',
-  },
-
-  -- GitHub Copilot plugin
-  {
-    'github/copilot.vim',
-    config = function()
-      -- Optional: Add custom configuration here
-      -- vim.g.copilot_no_tab_map = true
-      -- vim.api.nvim_set_keymap('i', '<C-I>', 'copilot#Accept("<CR>")', { silent = true, expr = true, script = true })
-    end,
-  },
-
-  {
-    'christoomey/vim-tmux-navigator',
-    cmd = {
-      'TmuxNavigateLeft',
-      'TmuxNavigateDown',
-      'TmuxNavigateUp',
-      'TmuxNavigateRight',
-      'TmuxNavigatePrevious',
-    },
-    keys = {
-      { '<c-h>', '<cmd><C-U>TmuxNavigateLeft<cr>' },
-      { '<c-j>', '<cmd><C-U>TmuxNavigateDown<cr>' },
-      { '<c-k>', '<cmd><C-U>TmuxNavigateUp<cr>' },
-      { '<c-l>', '<cmd><C-U>TmuxNavigateRight<cr>' },
-      { '<c-\\>', '<cmd><C-U>TmuxNavigatePrevious<cr>' },
-    },
-  },
-
-  -- { 'mhinz/vim-startify', event = 'VimEnter' },
-
-  {
-    'numToStr/Comment.nvim',
-    opts = {
-      -- add any options here
-      mappings = {
-        ---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
-        basic = false,
-        ---Extra mapping; `gco`, `gcO`, `gcA`
-        extra = false,
-      },
-    },
-  },
-
-  {
-    'karb94/neoscroll.nvim',
-    config = function()
-      local neoscroll = require 'neoscroll'
-      neoscroll.setup {
-        mappings = { -- Keys to be mapped to their corresponding default scrolling animation
-          '<C-u>',
-          '<C-d>',
-          '<C-b>',
-          '<C-f>',
-          '<C-y>',
-          '<C-e>',
-          'zt',
-          'zz',
-          'zb',
-        },
-        hide_cursor = true, -- Hide cursor while scrolling
-        stop_eof = true, -- Stop at <EOF> when scrolling downwards
-        respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-        easing = 'linear', -- Default easing function
-        pre_hook = nil, -- Function to run before the scrolling animation starts
-        post_hook = nil, -- Function to run after the scrolling animation ends
-        performance_mode = false, -- Disable "Performance Mode" on all buffers.
-      }
-      vim.keymap.set('n', '<C-d>', function()
-        neoscroll.ctrl_d { duration = 150 }
-      end)
-      vim.keymap.set('v', '<C-d>', function()
-        neoscroll.ctrl_d { duration = 150 }
-      end)
-      vim.keymap.set('n', '<C-u>', function()
-        neoscroll.ctrl_u { duration = 150 }
-      end)
-      vim.keymap.set('v', '<C-u>', function()
-        neoscroll.ctrl_u { duration = 150 }
-      end)
-    end,
-  },
-
-  {
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter',
-    config = true,
-    -- use opts = {} for passing setup options
-    -- this is equalent to setup({}) function
-  },
 
   --{
   --  'pmizio/typescript-tools.nvim',
@@ -552,7 +426,7 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  -- { 'numToStr/Comment.nvim', opts = {} },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -1191,7 +1065,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   -- require 'kickstart.plugins.none-ls',
@@ -1201,7 +1075,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
@@ -1231,15 +1105,3 @@ require('lazy').setup({
 
 -- Enable automatic signature help
 -- vim.cmd [[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]]
-
---Harpoon config
-local harpoon = require 'harpoon'
-
-harpoon:setup()
-
-vim.keymap.set('n', '<leader>a', function()
-  harpoon:list():add()
-end, { desc = 'Add [M]arker to Harpoon' })
-vim.keymap.set('n', '<leader>j', function()
-  harpoon.ui:toggle_quick_menu(harpoon:list())
-end, { desc = '[H]arpoon' })
