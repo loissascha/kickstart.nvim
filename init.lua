@@ -320,6 +320,9 @@ require('lazy').setup({
     'catppuccin/nvim',
     name = 'catppuccin',
     priority = 1000,
+    opts = {
+      transparent_background = true,
+    },
     init = function()
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
