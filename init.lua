@@ -89,6 +89,11 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.o.guifont = 'RobotoMono Nerd Font Mono:h14'
+if vim.g.neovide then
+  vim.g.neovide_transparency = 0.8
+end
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
@@ -321,7 +326,7 @@ require('lazy').setup({
     name = 'catppuccin',
     priority = 1000,
     opts = {
-      transparent_background = true,
+      -- transparent_background = true,
     },
     init = function()
       -- Load the colorscheme here.
