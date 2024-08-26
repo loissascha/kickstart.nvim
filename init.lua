@@ -337,6 +337,25 @@ require('lazy').setup({
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
     end,
+    config = function()
+      local catp = require 'catppuccin'
+      catp.setup {
+        color_overrides = {
+          mocha = {
+            base = '#161719',
+            mantle = '#161719',
+            crust = '#161719',
+          },
+        },
+      }
+      if vim.g.neovide then
+      else
+        -- make background transparent when not in neovide for transparency in terminal
+        catp.setup {
+          transparent_background = true,
+        }
+      end
+    end,
   },
 
   -- {
