@@ -90,9 +90,15 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 vim.o.guifont = 'RobotoMono Nerd Font Mono:h12'
-if vim.g.neovide then
-  vim.g.neovide_transparency = 0.88
-end
+-- if vim.g.neovide then
+--   vim.g.neovide_transparency = 0.88
+-- end
+
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3
+-- Default splitting will cause your main splits to jump when opening an edgebar.
+-- To prevent this, set `splitkeep` to either `screen` or `topline`.
+vim.opt.splitkeep = 'screen'
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
@@ -233,6 +239,11 @@ vim.keymap.set('n', '<leader>M', function()
   require('mini.files').open(vim.uv.cwd(), true)
 end, { desc = 'Open mini.files (in working directory)', noremap = true, silent = true })
 
+vim.keymap.set('n', '<A-h>', ':vertical resize -2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-j>', ':resize +2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-k>', ':resize -2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-l>', ':vertical resize +2<CR>', { noremap = true, silent = true })
+
 -- {
 --   '<leader>m',
 --   function()
@@ -351,9 +362,9 @@ require('lazy').setup({
       if vim.g.neovide then
       else
         -- make background transparent when not in neovide for transparency in terminal
-        catp.setup {
-          transparent_background = true,
-        }
+        -- catp.setup {
+        --   transparent_background = true,
+        -- }
       end
     end,
   },
