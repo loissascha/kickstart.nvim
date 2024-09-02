@@ -212,17 +212,18 @@ vim.keymap.set('n', '<leader>O', 'O<C-c>', { desc = 'Add line over' })
 
 -- vim.keymap.set('n', '<leader>n', ':NvimTreeToggle<Enter>', { desc = 'Toggle Nvim Tree', noremap = true, silent = true })
 
-vim.keymap.set('n', '<leader>bd', ':bd<Enter>', { desc = 'Buffer Delete', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>bc', ':bd ', { desc = 'Buffer Delete <number>' })
-vim.keymap.set('n', '<leader>bg', ':b ', { desc = 'Buffer Goto <number>' })
+vim.keymap.set('n', '<leader>bv', ':vsplit<CR>', { desc = 'Buffer Vertical Split', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>bh', ':split<CR>', { desc = 'Buffer Horizontal Split', noremap = true, silent = true })
 
--- vim.keymap.set('n', '<leader>h', ':BufferLineCyclePrev<CR>', { desc = 'previous tab', noremap = true, silent = true })
--- vim.keymap.set('n', '<leader>l', ':BufferLineCycleNext<CR>', { desc = 'next tab', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>bp', ':BufferPin<CR>', { desc = 'Buffer Pin', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>br', ':BufferRestore<CR>', { desc = 'Buffer Restore', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>bd', ':BufferClose<CR>', { desc = 'Buffer Close', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ba', ':BufferCloseAllButCurrentOrPinned<CR>', { desc = 'Buffer Close all but current/pinned', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>bh', ':BufferMovePrevious<CR>', { desc = 'Buffer Move left', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>bl', ':BufferMoveNext<CR>', { desc = 'Buffer Move right', noremap = true, silent = true })
 
--- vim.keymap.set('n', '<C-j>', '<C-d>', { desc = 'half page down' })
--- vim.keymap.set('n', '<C-k>', '<C-u>', { desc = 'half page up' })
--- vim.keymap.set('v', '<C-j>', '<C-d>', { desc = 'half page down' })
--- vim.keymap.set('v', '<C-k>', '<C-u>', { desc = 'half page up' })
+vim.keymap.set('n', '<leader>h', ':BufferPrevious<CR>', { desc = 'previous tab', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>l', ':BufferNext<CR>', { desc = 'next tab', noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>gs', ':Gitsigns stage_buffer<CR>', { desc = 'git stage buffer', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>gr', ':Gitsigns reset_buffer<CR>', { desc = 'git reset buffer', noremap = true, silent = true })
@@ -356,10 +357,16 @@ require('lazy').setup({
             base = '#161719',
             mantle = '#161719',
             crust = '#161719',
+            -- base = '#000000',
+            -- mantle = '#000000',
+            -- crust = '#000000',
           },
         },
       }
       if vim.g.neovide then
+        catp.setup {
+          transparent_background = true,
+        }
       else
         -- make background transparent when not in neovide for transparency in terminal
         -- catp.setup {
@@ -368,42 +375,6 @@ require('lazy').setup({
       end
     end,
   },
-
-  -- {
-  --   'akinsho/bufferline.nvim',
-  --   requires = 'nvim-tree/nvim-web-devicons',
-  --   config = function()
-  --     require('bufferline').setup {
-  --       options = {
-  --         numbers = 'buffer_id',
-  --         close_command = 'bdelete! %d',
-  --         right_mouse_command = 'bdelete! %d',
-  --         left_mouse_command = 'buffer %d',
-  --         middle_mouse_command = nil,
-  --         indicator = {
-  --           icon = '▎', -- this should be omitted if indicator style is set to 'icon'
-  --         },
-  --         buffer_close_icon = '',
-  --         modified_icon = '●',
-  --         close_icon = '',
-  --         left_trunc_marker = '',
-  --         right_trunc_marker = '',
-  --         max_name_length = 18,
-  --         max_prefix_length = 15, -- prefix used when a buffer is deduplicated
-  --         tab_size = 18,
-  --         show_buffer_close_icons = true,
-  --         show_buffer_icons = true,
-  --         show_close_icon = true,
-  --         show_tab_indicators = true,
-  --         persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
-  --         -- separator_style = 'slant' | 'thick' | 'thin' | { 'any', 'any' },
-  --         enforce_regular_tabs = false,
-  --         always_show_bufferline = true,
-  --         --sort_by = 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs',
-  --       },
-  --     }
-  --   end,
-  -- },
 
   {
     'lewis6991/gitsigns.nvim',

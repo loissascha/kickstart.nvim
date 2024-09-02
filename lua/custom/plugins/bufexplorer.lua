@@ -1,5 +1,5 @@
 return {
-  {
-    'jlanzarotta/bufexplorer',
-  },
+  -- {
+  --   'jlanzarotta/bufexplorer',
+  -- },
 }
