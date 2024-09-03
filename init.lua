@@ -221,6 +221,7 @@ vim.keymap.set('n', '<leader>bd', ':BufferClose<CR>', { desc = 'Buffer Close', n
 vim.keymap.set('n', '<leader>ba', ':BufferCloseAllButCurrentOrPinned<CR>', { desc = 'Buffer Close all but current/pinned', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>bh', ':BufferMovePrevious<CR>', { desc = 'Buffer Move left', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>bl', ':BufferMoveNext<CR>', { desc = 'Buffer Move right', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>bb', ':BufferPick<CR>', { desc = 'Buffer Pick', noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>h', ':BufferPrevious<CR>', { desc = 'previous tab', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>l', ':BufferNext<CR>', { desc = 'next tab', noremap = true, silent = true })
@@ -332,6 +333,45 @@ require('lazy').setup({
       require('colorizer').setup()
     end,
   },
+  {
+    'sho-87/kanagawa-paper.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+  {
+    'slugbyte/lackluster.nvim',
+    lazy = false,
+    priority = 1000,
+    init = function()
+      -- vim.cmd.colorscheme 'lackluster'
+      -- vim.cmd.colorscheme("lackluster-hack") -- my favorite
+      -- vim.cmd.colorscheme("lackluster-mint")
+    end,
+  },
+  {
+    'bluz71/vim-moonfly-colors',
+    name = 'moonfly',
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    init = function()
+      vim.cmd.colorscheme 'rose-pine'
+    end,
+    config = function()
+      local rosepine = require 'rose-pine'
+      rosepine.setup {
+        palette = {
+          -- moon = {
+          --   base = '#161719',
+          -- },
+        },
+      }
+    end,
+  },
 
   {
     'catppuccin/nvim',
@@ -342,12 +382,7 @@ require('lazy').setup({
     },
     init = function()
       -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'catppuccin'
-
-      -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
+      -- vim.cmd.colorscheme 'catppuccin'
     end,
     config = function()
       local catp = require 'catppuccin'
