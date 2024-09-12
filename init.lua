@@ -164,9 +164,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 12
 
-vim.opt.tabstop = 3
-vim.opt.shiftwidth = 3
-vim.opt.softtabstop = 3
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -241,10 +241,10 @@ vim.keymap.set('n', '<leader>M', function()
   require('mini.files').open(vim.uv.cwd(), true)
 end, { desc = 'Open mini.files (in working directory)', noremap = true, silent = true })
 
-vim.keymap.set('n', '<A-h>', ':vertical resize -2<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<A-j>', ':resize +2<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<A-k>', ':resize -2<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<A-l>', ':vertical resize +2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-H>', ':vertical resize -2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-J>', ':resize +2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-K>', ':resize -2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-L>', ':vertical resize +2<CR>', { noremap = true, silent = true })
 
 -- {
 --   '<leader>m',
