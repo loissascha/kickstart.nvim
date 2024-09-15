@@ -24,23 +24,23 @@ return {
       },
     },
   },
-  {
-    'echasnovski/mini.files',
-    version = '*',
-    opts = {
-      mappings = {
-        go_in_plus = '<CR>',
-        go_out = 'H',
-        go_out_plus = 'h',
-      },
-      options = {
-        use_as_default_explorer = true,
-        -- files will be located at
-        -- ~/.local/share/neobean/mini.files/trash
-        permanent_delete = false,
-      },
-    },
-  },
+  -- {
+  --   'echasnovski/mini.files',
+  --   version = '*',
+  --   opts = {
+  --     mappings = {
+  --       go_in_plus = '<CR>',
+  --       go_out = 'H',
+  --       go_out_plus = 'h',
+  --     },
+  --     options = {
+  --       use_as_default_explorer = true,
+  --       -- files will be located at
+  --       -- ~/.local/share/neobean/mini.files/trash
+  --       permanent_delete = false,
+  --     },
+  --   },
+  -- },
   -- {
   --   'folke/edgy.nvim',
   --   event = 'VeryLazy',
