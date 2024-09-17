@@ -24,7 +24,7 @@ return {
     opts = {},
     config = function()
       require('github-theme').setup {}
-      vim.cmd 'colorscheme github_dark_tritanopia'
+      vim.cmd 'colorscheme github_dark_default'
     end,
   },
   -- {
