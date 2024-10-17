@@ -741,8 +741,19 @@ require('lazy').setup({
         omnisharp = {},
         phpactor = {},
         tailwindcss = {},
+        svelte = {
+          settings = {
+            format = {
+              options = {
+                tabSize = 4, -- Adjust this to your desired tab size
+                insertSpaces = true, -- Set to false if you prefer tabs instead of spaces
+              },
+            },
+          },
+        },
         tsserver = {},
         html = {},
+        -- intelephense = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -1072,3 +1083,9 @@ require('lazy').setup({
 
 -- Enable automatic signature help
 -- vim.cmd [[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]]
+--
+require('lspconfig').phpactor.setup {
+  root_dir = function()
+    return vim.loop.cwd()
+  end,
+}

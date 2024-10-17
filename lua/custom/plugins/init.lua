@@ -125,16 +125,16 @@ return {
         performance_mode = false, -- Disable "Performance Mode" on all buffers.
       }
       vim.keymap.set('n', '<C-d>', function()
-        neoscroll.ctrl_d { duration = 150 }
+        neoscroll.ctrl_d { duration = 50 }
       end)
       vim.keymap.set('v', '<C-d>', function()
-        neoscroll.ctrl_d { duration = 150 }
+        neoscroll.ctrl_d { duration = 50 }
       end)
       vim.keymap.set('n', '<C-u>', function()
-        neoscroll.ctrl_u { duration = 150 }
+        neoscroll.ctrl_u { duration = 50 }
       end)
       vim.keymap.set('v', '<C-u>', function()
-        neoscroll.ctrl_u { duration = 150 }
+        neoscroll.ctrl_u { duration = 50 }
       end)
     end,
   },
