@@ -751,7 +751,7 @@ require('lazy').setup({
             },
           },
         },
-        tsserver = {},
+        ts_ls = {},
         html = {},
         -- intelephense = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
